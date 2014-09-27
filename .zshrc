@@ -39,7 +39,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats '@%b'
 
 precmd () {
-    local staged=`expr $(git status --porcelain 2>/dev/null| grep "^M" | wc -l)`
+    local staged=`expr $(git status --porcelain 2>/dev/null| grep "^[MA]" | wc -l)`
     local changed=`expr $(git status --porcelain 2>/dev/null| grep "^ M" | wc -l)`
     local untracked=`expr $(git status --porcelain 2>/dev/null| grep "^??" | wc -l)`
 
