@@ -48,4 +48,5 @@ precmd () {
     [[ -n $vcs_info_msg_0_ ]] && psvar[1]="($vcs_info_msg_0_ $staged | $changed | $untracked)"
 }
 
-PROMPT="%{$fg[white]%}%* %n@%m:%{$reset_color%} %{$fg[blue]%}%~%{$reset_color%} %{$fg[yellow]%}%1v%{$reset_color%} >> "
+PROMPT="%{$fg[white]%}%* %n@%m:%{$reset_color%} %{$fg[blue]%}%~%{$reset_color%} %{$fg[yellow]%}%1v%{$reset_color%}
+>> "

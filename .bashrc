@@ -61,7 +61,7 @@ fi
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-PS1='\[\e[37m\]\t ${debian_chroot:+($debian_chroot)}\[\e[37m\]\u@\h\[\e[37m\]: \[\e[34m\]\w $(__git_ps1 "\[\e[33m\](@%s)\[\e[00m\]")\[\e[00m\] \$ '
+PS1='\[\e[37m\]\t ${debian_chroot:+($debian_chroot)}\[\e[37m\]\u@\h\[\e[37m\]: \[\e[34m\]\w $(__git_ps1 "\[\e[33m\](@%s)\[\e[00m\]")\[\e[00m\] \n>> '
 
 
 
