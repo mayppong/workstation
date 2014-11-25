@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
 "Plugin 'edkolev/tmuxline.vim'      " alredy generated code for .byobu/.tmux.conf
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
