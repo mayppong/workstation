@@ -1,5 +1,5 @@
-#! /bin/sh
-apt-get install zsh
+#!/bin/sh
+apt-get install trash-cli zsh
 
 #
 make install-deb
