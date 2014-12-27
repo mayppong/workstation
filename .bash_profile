@@ -1,3 +1,4 @@
+# This is used by OS X as it doesn't run .bashrc by default on session start
 
 #----------
 #  Libraries/Import
