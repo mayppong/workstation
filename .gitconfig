@@ -1,0 +1,9 @@
+[user]
+	name = May Pongpitpitak
+	email = me@mayppong.com
+
+[core]
+	editor = vim
+
+[push]
+	default = simple
