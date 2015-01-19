@@ -10,16 +10,16 @@ export EDITOR='vim'
 #  Aliases
 #----------
 
-# beacuse vim happened
+# because vim happened
 alias :wq='exit'
 alias :q='exit'
 
-if [ -x $( which trash ) ]; then
+if type trash > /dev/null; then
     alias rm='trash-put'
 fi
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if type dircolors > /dev/null; then
     alias ls='ls -Gp --color=auto'
     alias l='ls --color=auto'
     alias la='ls -a --color=auto'
