@@ -40,6 +40,16 @@ set shiftwidth =4     " size of an indent
 set softtabstop =4    " a combination of spaces and tabs
 set tabstop =4        " size of a hard tabstop
 
+" enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" tab to autocomplete
+inoremap <expr><TAB> '<C-x><C-o>'
+
 
 
 "----------
