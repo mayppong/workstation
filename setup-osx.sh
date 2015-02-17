@@ -11,4 +11,4 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew doctor
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
-brew cask install google-chrome google-drive google-hangouts keepassx0 vagrant virtualbox colloquy sublime-text3
+brew cask install appcleaner google-chrome google-drive google-hangouts keepassx0 vagrant virtualbox colloquy sublime-text3
