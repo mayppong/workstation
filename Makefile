@@ -4,7 +4,7 @@ install:
 	cp ./.vimrc             ~/
 
 install-deb: install
-	cp ./.byobu/.tumx.conf  ~/.byobu/
+	cp ./.byobu/.tmux.conf  ~/.byobu/
 
 install-bash: install
 	cp ./.bash_profile      ~/
