@@ -10,6 +10,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ap/vim-css-color'
 "Plugin 'StanAngeloff/php.vim'      " updated php-syntax (5.3 - 5.6)
 
 call vundle#end()
