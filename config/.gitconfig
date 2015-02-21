@@ -3,7 +3,7 @@
 	email = me@mayppong.com
 
 [core]
-	autocrlf = true
+	autocrlf = input
 	fileMode = false
 	editor = vim
 
