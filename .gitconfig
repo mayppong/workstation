@@ -3,7 +3,15 @@
 	email = me@mayppong.com
 
 [core]
+	autocrlf = true
+	fileMode = false
 	editor = vim
+
+[alias]
+	st = status
+
+[color]
+	ui = auto
 
 [push]
 	default = simple

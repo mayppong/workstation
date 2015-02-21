@@ -2,6 +2,7 @@ install:
 	cp ./.shrc              ~/
 	cp ./.zshrc             ~/
 	cp ./.vimrc             ~/
+	cp ./.gitconfig         ~/
 
 install-deb: install
 	mkdir ~/.byobu
