@@ -6,11 +6,14 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
-"Plugin 'edkolev/tmuxline.vim'      " alredy generated code for .byobu/.tmux.conf
+
+Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'edkolev/tmuxline.vim'      " alredy generated code for .byobu/.tmux.conf
+
 Plugin 'ap/vim-css-color'
+"Plugin 'elixir-lang/vim-elixir'
 "Plugin 'StanAngeloff/php.vim'      " updated php-syntax (5.3 - 5.6)
 
 call vundle#end()
@@ -41,16 +44,6 @@ set shiftwidth =4     " size of an indent
 set softtabstop =4    " a combination of spaces and tabs
 set tabstop =4        " size of a hard tabstop
 
-" enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-" tab to autocomplete
-inoremap <expr><TAB> '<C-x><C-o>'
-
 
 
 "----------
@@ -74,6 +67,12 @@ syntax enable
 " autocomplete
 filetype plugin on
 set omnifunc =syntaxcomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"inoremap <expr><TAB> '<C-x><C-o>'
 
 " tmuxline
 "let g:tmuxline_powerline_separators = 0
