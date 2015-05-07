@@ -65,7 +65,6 @@ syntax enable
 "----------
 
 " autocomplete
-filetype plugin on
 set omnifunc =syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
