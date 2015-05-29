@@ -44,6 +44,8 @@ set shiftwidth =4     " size of an indent
 set softtabstop =4    " a combination of spaces and tabs
 set tabstop =4        " size of a hard tabstop
 
+" force .md file as markdown file type instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
 "----------
