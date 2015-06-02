@@ -1,23 +1,21 @@
-" Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" vim-plug
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'junegunn/vim-plug'
+Plug 'editorconfig/editorconfig-vim'
+"Plug 'edkolev/tmuxline.vim'      " alredy generated code for .byobu/.tmux.conf
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'airblade/vim-gitgutter'
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'edkolev/tmuxline.vim'      " alredy generated code for .byobu/.tmux.conf
+Plug 'scrooloose/syntastic'
+Plug 'ap/vim-css-color'
+Plug 'elixir-lang/vim-elixir'
+"Plug 'StanAngeloff/php.vim'      " updated php-syntax (5.3 - 5.6)
 
-Plugin 'ap/vim-css-color'
-"Plugin 'elixir-lang/vim-elixir'
-"Plugin 'StanAngeloff/php.vim'      " updated php-syntax (5.3 - 5.6)
-
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 
 
@@ -37,15 +35,13 @@ set timeoutlen =100
 "----------
 
 " behaviour
-set expandtab         " use spaces for tab
 set number            " enable line number
 set pastetoggle =<F2> " toggle cascading-indents when pasting
 set shiftwidth =4     " size of an indent
-set softtabstop =4    " a combination of spaces and tabs
-set tabstop =4        " size of a hard tabstop
 
 " force .md file as markdown file type instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 
 
 "----------
@@ -58,13 +54,13 @@ set cursorline                       " underline current line and and highlight 
 set list listchars=tab:»·,trail:·    " show extra space characters as a dot and tab as arrow and dots
 "set list listchars=tab:\|\ ,trail:·  " show extra space characters as a dot and tab as pipeline and spaces
 
-syntax enable
-
 
 
 "----------
 "  Plugin
 "----------
+
+filetype plugin on
 
 " autocomplete
 set omnifunc =syntaxcomplete#Complete
@@ -73,6 +69,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" tab to autocomplete
 "inoremap <expr><TAB> '<C-x><C-o>'
 
 " tmuxline
@@ -84,3 +82,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 " vim-gitgutter
 highlight clear SignColumn
+
+" vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
