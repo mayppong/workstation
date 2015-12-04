@@ -42,6 +42,14 @@ set shiftwidth =4     " size of an indent
 " force .md file as markdown file type instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" splitting
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 
 
 "----------
