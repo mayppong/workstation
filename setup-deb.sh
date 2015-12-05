@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install apps
-apt-get install trash-cli zsh
+sudo apt-get install -y trash-cli zsh
 
 # copy necessary files
 make install-deb
