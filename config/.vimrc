@@ -35,6 +35,7 @@ set timeoutlen =100
 "----------
 
 " behaviour
+set backspace =indent,eol,start  " overwrite vi-compatibility mode
 set number            " enable line number
 set pastetoggle =<F2> " toggle cascading-indents when pasting
 set shiftwidth =4     " size of an indent
