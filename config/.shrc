@@ -14,6 +14,13 @@ export EDITOR='vim'
 alias :wq='exit'
 alias :q='exit'
 
+# Docker
+alias dstart='docker-machine start'
+alias dex='docker exec -it'
+denv() { eval $(docker-machine env "${1:-default}"); }
+drmi() { docker rmi -f $(docker images -q -a -f dangling=true); }
+drm() { docker rm $(docker ps -q -a); }
+
 if type trash > /dev/null; then
     alias rm='trash-put'
 fi
