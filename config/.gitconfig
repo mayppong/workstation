@@ -1,17 +1,17 @@
 [user]
-	name = May Pongpitpitak
-	email = me@mayppong.com
+  name = May Pongpitpitak
+  email =
 
 [core]
-	autocrlf = input
-	fileMode = false
-	editor = vim
+  autocrlf = input
+  fileMode = false
+  editor = vim
 
 [alias]
-	st = status
+  st = status
 
 [color]
-	ui = auto
+  ui = auto
 
 [push]
-	default = simple
+  default = simple
