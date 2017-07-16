@@ -13,6 +13,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'ap/vim-css-color'
 Plug 'elixir-lang/vim-elixir'
+Plug 'leafgarland/typescript-vim'
 "Plug 'StanAngeloff/php.vim'      " updated php-syntax (5.3 - 5.6)
 
 call plug#end()
