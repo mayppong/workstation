@@ -64,6 +64,7 @@ set cursorline                       " underline current line and and highlight 
 set list listchars=tab:»·,trail:·    " show extra space characters as a dot and tab as arrow and dots
 "set list listchars=tab:\|\ ,trail:·  " show extra space characters as a dot and tab as pipeline and spaces
 
+autocmd BufEnter,WinEnter * match ErrorMsg /\%>78v.\+/
 
 
 "----------
