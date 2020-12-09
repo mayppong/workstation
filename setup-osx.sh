@@ -7,8 +7,8 @@ make install
 sh ./setup.sh
 
 # install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
-brew install caskroom/cask/brew-cask
-brew tap caskroom/versions
-brew cask install appcleaner google-chrome google-drive google-hangouts keepassx0 vagrant virtualbox colloquy sublime-text3
+
+brew install --cask appcleaner discord docker google-chrome \
+  slack visual-studio-code
