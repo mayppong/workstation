@@ -3,8 +3,6 @@ install:
 	cp ./config/.zshrc             ~/
 	cp ./config/.vimrc             ~/
 	cp ./config/.gitconfig         ~/
-
-install-deb: install
 	mkdir ~/.byobu
 	cp ./config/.byobu/.tmux.conf  ~/.byobu/
 
