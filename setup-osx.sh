@@ -10,5 +10,7 @@ sh ./setup.sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 
-brew install --cask appcleaner discord docker google-chrome \
-  slack visual-studio-code
+brew install byobu
+brew install --cask appcleaner google-chrome keeweb \
+  discord slack \
+  docker visual-studio-code
