@@ -55,5 +55,3 @@ fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 
-
-
