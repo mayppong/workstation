@@ -55,7 +55,7 @@
       nixpkgs.hostPlatform = "x86_64-darwin";
 
       # Enable Touch ID for `sudo` commands
-      # security.pam.enableSudoTouchIdAuth = true;
+      security.pam.enableSudoTouchIdAuth = true;
 
       # User-specific configurations
       users.users.mayppong = {
