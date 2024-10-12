@@ -11,6 +11,7 @@ sh ./setup.sh
 brew doctor
 
 brew install byobu
-brew install --cask appcleaner google-chrome keeweb \
-  discord slack \
+brew install --cask \
+  appcleaner keeweb opentmtp \
+  google-chrome discord slack vlc \
   docker visual-studio-code
