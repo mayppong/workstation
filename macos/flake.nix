@@ -2,88 +2,105 @@
   description = "ZynthiaAir Sonoma setup";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 4;
+  outputs = { self, nix-darwin, nixpkgs }@inputs:
+    let
+      configuration = { pkgs, ... }: {
 
-      # List packages installed in system profile. To search by name, run:
-      # `$ nix-env -qaP | grep wget`
-      # environment.systemPackages = [];
+        # Necessary for using flakes on this system.
+        nix.settings.experimental-features = "nix-command flakes";
 
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      nix.package = pkgs.nix;
+        # Auto upgrade nix package and the daemon service.
+        services.nix-daemon.enable = true;
+        nix.package = pkgs.nix;
 
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
+        nixpkgs = {
+          # Allow software with commercial license to be installed
+          config.allowUnfree = true;
 
-      # Allow software with commercial license to be installed
-      nixpkgs.config.allowUnfree = true;
-
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on sonoma
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Mac OS behaviours
-      # https://daiderd.com/nix-darwin/manual/index.html
-      system.defaults = {
-        dock = {
-          autohide = true;
-
-          # hot corner action: mission control
-          wvous-tl-corner = 2;
-          wvous-tr-corner = 2;
+          # The platform the configuration will be used on.
+          # ["x86_64-darwin" "aarch64-darwin"]
+          hostPlatform = "aarch64-darwin";
         };
 
-        screencapture.location = "~/Pictures/Screenshots";
+        system = {
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          stateVersion = 4;
 
-        # allow trackpad tap to click
-        NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
-        trackpad = {
-          Clicking = true;
-          TrackpadRightClick = true;
-        };
+          # Set Git commit hash for darwin-version.
+          configurationRevision = self.rev or self.dirtyRev or null;
 
-        # Custom config not available directly through nix-darwin can be set
-        # through this `CustomUserPreferences`.
-        # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-        # https://macos-defaults.com/
-        CustomUserPreferences = {
-          "com.apple.desktopservices" = {
-            # Avoid creating .DS_Store files on network or USB volumes
-            DSDontWriteNetworkStores = true;
-            DSDontWriteUSBStores = true;
+          # Mac OS behaviours
+          # https://daiderd.com/nix-darwin/manual/index.html
+          defaults = {
+            dock = {
+              autohide = true;
+
+              # hot corner action: mission control
+              wvous-tl-corner = 2;
+              wvous-tr-corner = 2;
+            };
+
+            screencapture.location = "~/Pictures/Screenshots";
+
+            # allow trackpad tap to click
+            NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+            trackpad = {
+              Clicking = true;
+              TrackpadRightClick = true;
+            };
+
+            # Custom config not available directly through nix-darwin can be set
+            # through this `CustomUserPreferences`.
+            # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+            # https://macos-defaults.com/
+            CustomUserPreferences = {
+              "com.apple.desktopservices" = {
+                # Avoid creating .DS_Store files on network or USB volumes
+                DSDontWriteNetworkStores = true;
+                DSDontWriteUSBStores = true;
+              };
+
+              "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
+            };
           };
+        };
 
-          "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
+        # Enable Touch ID for `sudo` commands
+        security.pam.enableSudoTouchIdAuth = true;
+
+        # Create /etc/zshrc that loads the nix-darwin environment.
+        programs.zsh.enable = true;  # default shell on Sonoma
+
+
+        # User-specific configurations
+        users.users.mayppong = {
+          description = "ME! :)";
+          packages = with pkgs; [
+            pkgs.vim
+          ];
         };
       };
 
-      # The platform the configuration will be used on.
-      # Change to "aarch64-darwin" for Apple Silicon CPUs
-      nixpkgs.hostPlatform = "x86_64-darwin";
-
-      # Enable Touch ID for `sudo` commands
-      security.pam.enableSudoTouchIdAuth = true;
-
-      # User-specific configurations
-      users.users.mayppong = {
-        description = "ME! :)";
-        packages = with pkgs; [
-          pkgs.vim
-        ];
-      };
-    };
   in
   {
     # The config key is formatted as `darwinConfigurations."hostName"`
